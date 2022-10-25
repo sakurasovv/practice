@@ -1,0 +1,17 @@
+<select><option>Класс 1</option><option>Класс 2</option></select>
+<form>
+    <select [disabled] = enable>
+        <option *ngFor="let item of items">{{item}}</option>
+    </select>
+    <select [disabled] = enable>
+        <option *ngFor="let teacher of teachers">{{teacher}}</option>
+    </select>
+    <input [disabled] = disable>
+    <select [disabled] = disable>
+        <option></option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+</form>
