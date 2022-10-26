@@ -1,13 +1,19 @@
-<select><option>Класс 1</option><option>Класс 2</option></select>
-<form>
-    <select [disabled] = enable>
-        <option *ngFor="let item of items">{{item}}</option>
+<form [formGroup]="tableGroup">
+    <div>{{id + 1}}</div>
+    <select id="item" formControlName="item">
+        <option>Урок отсутствует</option>
+        <option>Русский язык</option>
+        <option>Математика</option>
+        <option>Английский язык</option>
     </select>
-    <select [disabled] = enable>
-        <option *ngFor="let teacher of teachers">{{teacher}}</option>
+    <select id="teacher" formControlName="teacher">
+        <option>Учитель отсутствует</option>
+        <option>Учитель 1</option>
+        <option>Учитель 2</option>
+        <option>Учитель 3</option>
     </select>
-    <input [disabled] = disable>
-    <select [disabled] = disable>
+    <input id="homework" formControlName="homework">
+    <select id="rate" formControlName="rate">
         <option></option>
         <option>2</option>
         <option>3</option>

@@ -1,10 +1,7 @@
 <ul>
-    <li *ngFor="let day of daysRU; index as i">
-        <a routerLink="{{daysEN[i]}}">{{day}}</a>
+    <li *ngFor="let day of days">
+        <a href="{{day}}">{{day}}</a>
     </li>
 </ul>
-<router-outlet>
-    <worktable></worktable> 
-</router-outlet>
-
-<button (click)="save()">Сохранить</button>
+    <worktable *ngFor="let i of idList" [id]="'i'" [group]="a"></worktable> 
+    <button (click)="addLesson()">Добавить урок</button>

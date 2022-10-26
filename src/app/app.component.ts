@@ -1,22 +1,26 @@
-import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'sgorod';
-  daysEN = ['monday', 'tuesday','wednesday','thursday','friday']
-  daysRU = ['Понедельник','Вторник','Среда','Четверг','Пятница']
-  save(){
-    let data = {
-      item:'Математика',
-      teacher:'Учитель 1',
-      homework:'№3, 4',
-      rate:5
-    }
-    localStorage.setItem('session', JSON.stringify(data))
+  days = ['Понедельник','Вторник','Среда','Четверг','Пятница']
+
+  idList : any = []
+
+  addLesson(){
+    let id = localStorage.length
+    this.idList.push(id)
+    console.log(this.idList)
+  }
+  
+  ngOnInit(){
+    let ids = []
+    for (let i = 0; i < localStorage.length; i++){ ids.push(i) }
+    this.idList = ids
+    console.log(this.idList)
   }
 }

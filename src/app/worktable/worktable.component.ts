@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { accessType } from '../access-type';
+
 
 @Component({
   selector: 'worktable',
@@ -7,19 +9,39 @@ import { accessType } from '../access-type';
   styleUrls: ['./worktable.component.scss']
 })
 export class WorktableComponent implements OnInit {
+  
+  @Input() id: string
+  @Input() group: string
 
   constructor() { }
-  items = ['', 'Урок отсутствует','Математика', 'Физкультура', 'Физика', 'Химия', 'Русский язык', 'Литература', 'География', 'Английский язык']
-  teachers = ['', 'Без учителя', 'Учитель 1', 'Учитель 2']
-  disable = false
-  enable = false
 
-  ngOnInit(): boolean {
-      if (accessType === 'admin')
-        return true
-      else if (accessType === 'teacher')
-        return this.enable = true
-      else return this.enable = true, this.disable = true      
+  tableGroup : FormGroup
+
+
+  ngOnInit() {
+    const session = this.id
+    if (localStorage.getItem(session)){
+      let data : any = localStorage.getItem(session)
+      data = JSON.parse(data)
+      this.tableGroup = new FormGroup({
+        item: new FormControl(data.item),
+        teacher: new FormControl(data.teacher),
+        homework: new FormControl(data.homework),
+        rate: new FormControl(data.rate),
+      })
+    } else {
+      this.tableGroup = new FormGroup({
+        item: new FormControl(null),
+        teacher: new FormControl(null),
+        homework: new FormControl(null),
+        rate: new FormControl(null),
+      })
+    }
+
+    console.log()
+    this.tableGroup.valueChanges.subscribe((value) => localStorage.setItem(session, JSON.stringify(value)))
+
   }
+
 }
 
