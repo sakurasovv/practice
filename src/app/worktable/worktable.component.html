@@ -1,5 +1,5 @@
 <form [formGroup]="tableGroup">
-    <div>{{id + 1}}</div>
+    <span>{{numberId + 1}}</span>
     <select id="item" formControlName="item">
         <option>Урок отсутствует</option>
         <option>Русский язык</option>
@@ -7,7 +7,7 @@
         <option>Английский язык</option>
     </select>
     <select id="teacher" formControlName="teacher">
-        <option>Учитель отсутствует</option>
+        <option>Без учителя</option>
         <option>Учитель 1</option>
         <option>Учитель 2</option>
         <option>Учитель 3</option>

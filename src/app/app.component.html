@@ -1,7 +1,18 @@
 <ul>
-    <li *ngFor="let day of days">
-        <a href="{{day}}">{{day}}</a>
+    <li *ngFor="let day of days" (click)="setDay(day)" (click)="ngOnInit()">
+{{day}}
     </li>
 </ul>
-    <worktable *ngFor="let i of idList" [id]="'i'" [group]="a"></worktable> 
-    <button (click)="addLesson()">Добавить урок</button>
+
+<button *ngFor="let group of groups" (click)="setGroup(group)" (click)="ngOnInit()">{{group}}</button>
+<worktable
+    *ngFor="let i of idList"
+    [id]="i"
+    formControlItem="id"
+    [group]="group"
+    [day]="day"
+    [access]="access"
+></worktable>
+<div>
+<button *ngFor="let access of accessList" (click)="setAcess(access)">{{access}}</button>
+</div>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { accessType } from '../access-type';
 
 
 @Component({
@@ -12,35 +11,49 @@ export class WorktableComponent implements OnInit {
   
   @Input() id: string
   @Input() group: string
-
+  @Input() day: string
+  @Input() access: string
   constructor() { }
 
   tableGroup : FormGroup
-
-
-  ngOnInit() {
-    const session = this.id
+  numberId : number
+  
+  teacherAcess: boolean
+  studentAcess: boolean
+  
+  ngOnInit() : any {
+    
+      switch (this.access){
+        case 'Ученик': this.teacherAcess = true, this.studentAcess = true; break
+        case 'Учитель': this.teacherAcess = true, this.studentAcess = false; break
+        case 'Админ' : this.teacherAcess = false, this.studentAcess = false; break
+      }
+    
+    const session = this.id + this.group + this.day
+    this.numberId = Number(this.id)
     if (localStorage.getItem(session)){
+
       let data : any = localStorage.getItem(session)
       data = JSON.parse(data)
       this.tableGroup = new FormGroup({
-        item: new FormControl(data.item),
-        teacher: new FormControl(data.teacher),
-        homework: new FormControl(data.homework),
-        rate: new FormControl(data.rate),
+        item: new FormControl({value: data.item, disabled: this.teacherAcess}),
+        teacher: new FormControl({value: data.teacher, disabled: this.teacherAcess}),
+        homework: new FormControl({value: data.homework, disabled: this.studentAcess}),
+        rate: new FormControl({value: data.rate, disabled: this.studentAcess}),
       })
-    } else {
+    }
+    else {
       this.tableGroup = new FormGroup({
-        item: new FormControl(null),
-        teacher: new FormControl(null),
-        homework: new FormControl(null),
-        rate: new FormControl(null),
+        item: new FormControl({value: null, disabled: this.teacherAcess}),
+        teacher: new FormControl({value: null, disabled: this.teacherAcess}),
+        homework: new FormControl({value: null, disabled: this.studentAcess}),
+        rate: new FormControl({value: null, disabled: this.studentAcess}),
       })
     }
 
-    console.log()
     this.tableGroup.valueChanges.subscribe((value) => localStorage.setItem(session, JSON.stringify(value)))
 
+    
   }
 
 }
