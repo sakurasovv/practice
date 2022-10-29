@@ -11,38 +11,38 @@ export class AppComponent implements OnInit {
 
   days = ['Понедельник','Вторник','Среда','Четверг','Пятница']
   day = 'Понедельник'
-  groups = ['Класс 1', 'Класс 2']
-  group = 'Класс 1'
-  accessList = ['Админ', 'Учитель', 'Ученик']
+
+  accessList = ['Администратор', 'Учитель', 'Ученик']
   access : string
 
-  idList : any = [0, 1, 2, 3, 4, 5]
+    
 
-  setGroup(value: string)
-  {
-    return this.group=value, this.idList = [0, 1, 2, 3, 4, 5]
-  }
+  idList : any = [0, 1, 2, 3, 4, 5]
 
   setDay(value: string)
   {
     return this.day=value, this.idList = [0, 1, 2, 3, 4, 5]
   }
 
-  setAcess(value:string)
+  setAccess(value:string)
   {
-    this.access = value
+    return this.access = value, this.idList = [0, 1, 2, 3, 4, 5]
   }
 
-  ngOnInit(){
-    let ids: any = [0, 1, 2, 3, 4, 5]
+  update() {
+    let ids: any = ['0', '1', '2', '3', '4', '5']
     for (let i = 0; i < localStorage.length; i++)
     { 
-      let idKey: any = localStorage.key(i)?.split(' ')
-      if (idKey[1][0] === this.group[this.group.length - 1] && idKey[1][1]+idKey[1][2] === this.day[0]+this.day[1] )
+      let idKey: any = localStorage.key(i)
+      if (idKey[1]+idKey[1] === this.day[0]+this.day[1] )
       {
         ids[idKey[0][0]] = idKey[0][0]
       } else continue
     }
     this.idList = ids.sort()
+  }
+
+  ngOnInit(){
+    this.update()
   }
 }
