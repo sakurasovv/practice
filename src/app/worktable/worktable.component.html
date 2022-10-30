@@ -1,17 +1,22 @@
-<form [formGroup]="tableGroup">
-    <span>{{numberId + 1}}</span>
-    <select id="item" formControlName="item">
-        <option>Урок отсутствует</option>
-        <option>Русский язык</option>
-        <option>Математика</option>
-        <option>Английский язык</option>
-    </select>
-    <input id="homework" formControlName="homework">
-    <select id="rate" formControlName="rate">
-        <option></option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
+<form [formGroup]="tableGroup" class="form">
+    <span class="table id">{{numberId + 1}}</span>
+    <div class="select">
+        <select id="item" formControlName="item" class="table item">
+            <option>Урок отсутствует</option>
+            <option>Русский язык</option>
+            <option>Математика</option>
+            <option>Английский язык</option>
+        </select>
+    </div>
+    <input class="table input" id="homework " formControlName="homework">
+    <div class="select">
+        <select id="rate" formControlName="rate" class="table rate">
+            <option></option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    
 </form>

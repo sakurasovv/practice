@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   {
     return this.access = value, this.idList = [0, 1, 2, 3, 4, 5]
   }
-
+  
   update() {
     let ids: any = ['0', '1', '2', '3', '4', '5']
     for (let i = 0; i < localStorage.length; i++)

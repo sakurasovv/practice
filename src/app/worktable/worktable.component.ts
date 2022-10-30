@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -35,9 +35,9 @@ export class WorktableComponent implements OnInit {
       let data : any = localStorage.getItem(session)
       data = JSON.parse(data)
       this.tableGroup = new FormGroup({
-        item: new FormControl({value: data.item, disabled: this.teacherAcess}, Validators.required),
-        homework: new FormControl({value: data.homework, disabled: this.studentAcess}, Validators.required),
-        rate: new FormControl({value: data.rate, disabled: this.studentAcess}, Validators.required),
+        item: new FormControl({value: data.item, disabled: this.teacherAcess}),
+        homework: new FormControl({value: data.homework, disabled: this.studentAcess}),
+        rate: new FormControl({value: data.rate, disabled: this.studentAcess}),
       })
     }
     else {
@@ -48,7 +48,15 @@ export class WorktableComponent implements OnInit {
       })
     }
 
-    this.tableGroup.valueChanges.subscribe((value) => localStorage.setItem(session, JSON.stringify(value)))
+
+    this.tableGroup.valueChanges.subscribe((value) => {
+      let data : any = localStorage.getItem(session)
+      data = JSON.parse(data)
+      if (!value.item) {
+        value.item = data.item
+        localStorage.setItem(session, JSON.stringify(value))
+      } else localStorage.setItem(session, JSON.stringify(value))
+    })
 
     
   }

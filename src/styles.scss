@@ -1,7 +1,18 @@
 * {
     margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     padding: 0;
+    box-sizing: border-box;
 }
 li {
     display: inline;
 }
+html, body { height: 100%; }
+.appRoot { background: #5c6664; border-radius: 6px;}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightgray;
+}
+

@@ -1,24 +1,30 @@
-<ul>
-    <li *ngFor="let day of days" (click)="setDay(day)" (click)="update()">
-{{day}}
-    </li>
-</ul>
+<mat-button-toggle-group (click)="update()">
+  <mat-button-toggle
+    *ngFor="let day of days"
+    (click)="setDay(day)"
+    class="day">{{day}}</mat-button-toggle>
+</mat-button-toggle-group>
+
 
 <form>
 <ul>
-    <li>Номер урока</li>
-    <li>Дисциплина</li>
-    <li>Домашнее задание</li>
-    <li>Оценка</li>
+    <li class="table Id">№</li>
+    <li class="table Item">Дисциплина</li>
+    <li class="table Homework">Домашнее задание</li>
+    <li class="table Rate">Оценка</li>
 </ul>
 
-    <worktable
+  <worktable
     *ngFor="let i of idList"
     [id]="i"
     [day]="day"
     [access]="access"
-    ></worktable>
+  ></worktable>
 </form>
-<div>
-<button *ngFor="let access of accessList" (click)="setAccess(access)" (click)="update()">{{access}}</button>
-</div>
+
+<mat-button-toggle-group (click)="update()">
+  <mat-button-toggle
+    *ngFor="let access of accessList"
+    (click)="setAccess(access)"
+    class="access">{{access}}</mat-button-toggle>
+</mat-button-toggle-group>
