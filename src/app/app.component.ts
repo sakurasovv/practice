@@ -8,41 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'sgorod';
-
   days = ['Понедельник','Вторник','Среда','Четверг','Пятница']
-  day = 'Понедельник'
-
   accessList = ['Администратор', 'Учитель', 'Ученик']
+  day = decodeURI(window.location.pathname).slice(1)
   access : string
-
-    
-
   idList : any = [0, 1, 2, 3, 4, 5]
 
-  setDay(value: string)
-  {
+  setDay(value: string) {
     return this.day=value, this.idList = [0, 1, 2, 3, 4, 5]
   }
 
-  setAccess(value:string)
-  {
+  setAccess(value:string) {
     return this.access = value, this.idList = [0, 1, 2, 3, 4, 5]
   }
   
   update() {
-    let ids: any = ['0', '1', '2', '3', '4', '5']
-    for (let i = 0; i < localStorage.length; i++)
-    { 
-      let idKey: any = localStorage.key(i)
-      if (idKey[1]+idKey[1] === this.day[0]+this.day[1] )
-      {
-        ids[idKey[0][0]] = idKey[0][0]
-      } else continue
-    }
-    this.idList = ids.sort()
+    this.idList = ['0', '1', '2', '3', '4', '5']
   }
 
-  ngOnInit(){
+  ngOnInit() {  
     this.update()
   }
 }

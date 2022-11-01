@@ -2,18 +2,19 @@
   <mat-button-toggle
     *ngFor="let day of days"
     (click)="setDay(day)"
-    class="day">{{day}}</mat-button-toggle>
+    class="Day"
+    value="day"
+    routerLink="/{{day}}"
+    >{{day}}</mat-button-toggle>
 </mat-button-toggle-group>
 
-
 <form>
-<ul>
+  <ul>
     <li class="table Id">№</li>
     <li class="table Item">Дисциплина</li>
     <li class="table Homework">Домашнее задание</li>
     <li class="table Rate">Оценка</li>
-</ul>
-
+  </ul>
   <worktable
     *ngFor="let i of idList"
     [id]="i"
@@ -26,5 +27,6 @@
   <mat-button-toggle
     *ngFor="let access of accessList"
     (click)="setAccess(access)"
-    class="access">{{access}}</mat-button-toggle>
+    class="Access">{{access}}
+  </mat-button-toggle>
 </mat-button-toggle-group>

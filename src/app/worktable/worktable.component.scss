@@ -1,17 +1,10 @@
-.form {
-    display: flex;
-//    justify-content: center;
-    align-items: center;
-}
+.form { display: flex; align-items: center; }
 .table {
     border: 1px solid gray;
     background: #5c6664;
     color:#fff
 }
-*:disabled {
-    opacity: 1;
-    cursor: default;
-}
+*:disabled { opacity: 1; cursor: default; }
 select {
    -webkit-appearance:none;
    -moz-appearance:none;
@@ -28,9 +21,7 @@ select {
    font-size: 1em;
    font-family: 'Open Sans', sans-serif;
 }
-select::-ms-expand {
-   display: none;
-}
+select::-ms-expand { display: none; }
 .select {
    position: relative;
    display: inline-flex;
@@ -38,14 +29,8 @@ select::-ms-expand {
    line-height: 3;
    overflow: hidden;
    border: 1px solid gray;
-
-   .item {
-    width: 200px;
-   }
-
-   .rate {
-    width: 100px;
-   }
+   .item { width: 200px; }
+   .rate { width: 100px; }
 }
 .select::after {
    content: '\25BC';
